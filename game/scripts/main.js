@@ -27,9 +27,10 @@ export const playerInGame = {
 
 export var fruitI = 0
 export var playerI = 0
-var points = 0
+var points = -1
 //----functions 
-launchGme();
+const statesOfTheGame = launchGme();
+statesOfTheGame.ranking()
 
 function launchGme(){
     console.log('entrou')
@@ -50,9 +51,13 @@ function launchGme(){
         points = points + 1
         labelElements.l1.textContent = playerInGame.mainPlayer[0] + ' . . . . . . . . . ' + points
     }
+    return{
+        ranking
+    }
 }
 const socket = io()
 
 socket.on('connect', () => {
     console.log(`player connected ${socket.id}`)
+    console.log(socket)
 })
